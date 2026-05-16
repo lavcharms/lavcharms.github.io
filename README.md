@@ -110,4 +110,4 @@ Hey! I'm Lavanya — a frontend developer and UI/UX designer who loves building 
 
 ---
 
-<p align="center">Made with 🩷 and way too much coffee &nbsp;|&nbsp; © 2026 Lavanya Chandel</p>
+<p align="center">Made with way too much coffee &nbsp;|&nbsp; © 2026 Lavanya Chandel</p>

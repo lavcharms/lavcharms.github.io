@@ -33,6 +33,23 @@ const PROJECTS = [
     link: "https://github.com/lavcharms/DINOSAUR-GAME",
     image: "/project2.png",
   },
+  {
+    title: "RETAIL ECOMMERCE ANALYTICS",
+    desc: "SQL/BI portfolio project featuring a synthetic relational ecommerce dataset, 14 SQL queries, and a 5-tab interactive Streamlit dashboard for retail sales insights.",
+    tags: ["SQL", "Python", "Streamlit"],
+    color: "#61dafb",
+    link: "https://github.com/lavcharms/retailecommerce",
+    demo: "https://retailecommerce.streamlit.app/",
+    image: "/project3.png",
+  },
+  {
+    title: "TECHGUITAR",
+    desc: "Real-time computer vision air chord player. Dual hand tracking selects notes and chord types via circular menus; a pinch gesture triggers live audio synthesis.",
+    tags: ["Python", "MediaPipe", "OpenCV", "NumPy"],
+    color: "#f29111",
+    link: "https://github.com/lavcharms/techguitar",
+    image: "/project4.png",
+  },
 ];
 
 const TOOLS = [
@@ -268,28 +285,34 @@ function SkillsSection() {
 
 function ProjectsSection() {
   return (
-    <section id="projects" style={{ minHeight: "100vh", padding: "80px 80px 80px 100px", position: "relative" }}>
+    <section id="projects" style={{ minHeight: "100vh", padding: "80px 0 80px 100px", position: "relative", overflow: "hidden" }}>
       <SectionLabel label="03 — PROJECTS" />
       <h2 style={{ fontFamily: "'Georgia', serif", fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 900, color: "#fff", marginBottom: "12px", lineHeight: 1.1 }}>Projects <span style={{ color: "#e8006f" }}></span></h2>
       <p style={{ color: "rgba(180,180,210,0.6)", fontSize: "14px", marginBottom: "48px", fontFamily: "'Georgia', serif" }}>A collection of recent work across dimensions.</p>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "24px", maxWidth: "700px" }}>
+      <div className="projects-scroll" style={{ display: "flex", gap: "24px", overflowX: "auto", paddingBottom: "24px", scrollSnapType: "x mandatory" }}>
         {PROJECTS.map((proj, i) => (
           <div key={proj.title} onClick={() => window.open(proj.link, "_blank")}
-            style={{ background: "rgba(10,10,20,0.7)", border: "1px solid rgba(232,0,111,0.15)", borderRadius: "16px", padding: "20px", cursor: "pointer", transition: "all 0.35s ease", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", minHeight: "520px" }}
+            style={{ background: "rgba(10,10,20,0.7)", border: "1px solid rgba(232,0,111,0.15)", borderRadius: "16px", padding: "20px", cursor: "pointer", transition: "all 0.35s ease", position: "relative", overflow: "hidden", display: "flex", flexDirection: "column", minHeight: "520px", width: "340px", flexShrink: 0, scrollSnapAlign: "start" }}
             onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(232,0,111,0.5)"; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 16px 40px rgba(232,0,111,0.15)"; }}
             onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(232,0,111,0.15)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
             <div style={{ position: "absolute", top: 0, right: 0, width: "80px", height: "80px", opacity: 0.12, background: `radial-gradient(circle at top right, ${proj.color}, transparent)` }} />
             <div style={{ fontFamily: "'Courier New', monospace", fontSize: "11px", color: "#e8006f", letterSpacing: "3px", marginBottom: "16px", opacity: 0.7 }}>0{i + 1}</div>
             <div style={{ height: "260px", borderRadius: "8px", marginBottom: "20px", overflow: "hidden", border: "1px solid rgba(232,0,111,0.08)", flexShrink: 0 }}>
-              <img src={proj.image} alt={proj.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <img src={proj.image} alt={proj.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={(e) => { e.currentTarget.style.display = "none"; }} />
             </div>
             <h3 style={{ fontFamily: "'Georgia', serif", fontSize: "20px", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>{proj.title}</h3>
             <p style={{ color: "rgba(180,180,210,0.6)", fontSize: "13px", lineHeight: 1.6, marginBottom: "16px", flexGrow: 1 }}>{proj.desc}</p>
-            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: proj.demo ? "12px" : "0" }}>
               {proj.tags.map((tag) => (
                 <span key={tag} style={{ background: "rgba(232,0,111,0.1)", border: "1px solid rgba(232,0,111,0.2)", color: "#e8006f", fontSize: "10px", letterSpacing: "1px", padding: "4px 10px", borderRadius: "20px", fontFamily: "'Courier New', monospace" }}>{tag}</span>
               ))}
             </div>
+            {proj.demo && (
+              <a href={proj.demo} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}
+                style={{ color: "#e8006f", fontSize: "11px", fontFamily: "'Courier New', monospace", letterSpacing: "1px", textDecoration: "none", borderBottom: "1px solid rgba(232,0,111,0.4)", alignSelf: "flex-start" }}>
+                LIVE DEMO →
+              </a>
+            )}
           </div>
         ))}
       </div>
@@ -423,25 +446,21 @@ export default function Portfolio() {
   return (
     <div style={{ background: "#06060f", minHeight: "100vh", color: "#fff", position: "relative", overflowX: "hidden" }}>
       <style>{`
-        @keyframes glitch1 { 0%,90%,100%{transform:translate(0)} 92%{transform:translate(-3px,1px)} 94%{transform:translate(3px,-1px)} 96%{transform:translate(-1px,2px)} }
-        @keyframes glitch2 { 0%,90%,100%{transform:translate(0)} 91%{transform:translate(3px,-2px)} 93%{transform:translate(-3px,1px)} 95%{transform:translate(2px,-1px)} }
-        @keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
-        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
-        @keyframes rotateSlow { from{transform:translateY(-50%) rotate(0deg)} to{transform:translateY(-50%) rotate(360deg)} }
-        @keyframes spiderFloat { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
-        @media (max-width: 900px) {
-          .hero-photo{display:none !important} .hero-spider{display:none !important} .hero-orbits{display:none !important}
-          #home{padding:0 24px 0 90px !important}
-          #about,#skills,#projects,#contact{padding:60px 24px 60px 90px !important}
-        }
-        @media (max-width: 600px) {
-          #home{padding:0 16px 0 80px !important}
-          #about,#skills,#projects,#contact{padding:60px 16px 60px 80px !important}
-        }
+        @keyframes glitch1 { ... }
+        @keyframes glitch2 { ... }
+        @keyframes blink { ... }
+        @keyframes pulse { ... }
+        @keyframes rotateSlow { ... }
+        @keyframes spiderFloat { ... }
+        @media (max-width: 900px) { ... }
+        @media (max-width: 600px) { ... }
         button:hover .nav-tooltip{opacity:1 !important}
         *{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
         ::-webkit-scrollbar{width:4px} ::-webkit-scrollbar-track{background:#06060f} ::-webkit-scrollbar-thumb{background:#e8006f;border-radius:2px}
+        .projects-scroll::-webkit-scrollbar { height: 6px; }
+        .projects-scroll::-webkit-scrollbar-track { background: rgba(232,0,111,0.05); border-radius: 3px; }
+        .projects-scroll::-webkit-scrollbar-thumb { background: #e8006f; border-radius: 3px; }
       `}</style>
       <WebPattern />
       <SideNav active={activeSection} onNav={handleNav} />

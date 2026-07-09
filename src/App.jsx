@@ -26,14 +26,6 @@ const PROJECTS = [
     image: "/project1.png",
   },
   {
-    title: "DINOSAUR GAME",
-    desc: "A web-based version of the classic Chrome Dinosaur Game, built with Vue.js and Firebase for real-time multiplayer functionality.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    color: "#c0c0e0",
-    link: "https://github.com/lavcharms/DINOSAUR-GAME",
-    image: "/project2.png",
-  },
-  {
     title: "RETAIL ECOMMERCE ANALYTICS",
     desc: "SQL/BI portfolio project featuring a synthetic relational ecommerce dataset, 14 SQL queries, and a 5-tab interactive Streamlit dashboard for retail sales insights.",
     tags: ["SQL", "Python", "Streamlit"],
@@ -49,6 +41,14 @@ const PROJECTS = [
     color: "#f29111",
     link: "https://github.com/lavcharms/techguitar",
     image: "/project4.png",
+  },
+  {
+    title: "DINOSAUR GAME",
+    desc: "A web-based version of the classic Chrome Dinosaur Game, built with Vue.js and Firebase for real-time multiplayer functionality.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    color: "#c0c0e0",
+    link: "https://github.com/lavcharms/DINOSAUR-GAME",
+    image: "/project2.png",
   },
 ];
 

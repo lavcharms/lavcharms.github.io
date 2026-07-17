@@ -40,7 +40,7 @@ const PROJECTS = [
     tags: ["Python", "MediaPipe", "OpenCV", "NumPy"],
     color: "#f29111",
     link: "https://github.com/lavcharms/techguitar",
-    image: "/project4.png",
+    image: "/pro4.png",
   },
   {
     title: "DINOSAUR GAME",
